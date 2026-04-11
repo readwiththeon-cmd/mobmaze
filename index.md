@@ -1,5 +1,12 @@
 # Mob Maze
 
+
+![MobMaze_ Net_1170x500](https://github.com/user-attachments/assets/aabf1263-3a53-401a-b4f0-7ff548e10431)
+
+
+
+
+
 ## Game Overview
 Mob Maze is an exciting adventure game where players navigate through a labyrinth filled with various challenges and obstacles. The ultimate goal is to reach the end of the maze while overcoming enemies and solving puzzles.
 
