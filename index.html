@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mob Maze Game</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .theme-switcher {
+            margin: 20px;
+        }
+        .game-artwork {
+            width: 100%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-switcher">
+        <label for="theme">Choose Theme:</label>
+        <select id="theme" onchange="switchTheme()">
+            <option value="white">White</option>
+            <option value="system">System (Auto)</option>
+            <option value="black">Black</option>
+        </select>
+    </div>
+    <h1>Mob Maze Game</h1>
+    <p>Welcome to Mob Maze, a thrilling maze adventure game where you navigate through complex mazes, avoiding obstacles and solving puzzles!</p>
+    <img src="mob-maze-artwork.jpg" alt="Mob Maze Artwork" class="game-artwork">
+
+    <script>
+        function switchTheme() {
+            const selectedTheme = document.getElementById('theme').value;
+            if (selectedTheme === 'black') {
+                document.body.style.backgroundColor = 'black';
+                document.body.style.color = 'white';
+            } else if (selectedTheme === 'white') {
+                document.body.style.backgroundColor = 'white';
+                document.body.style.color = 'black';
+            } else if (selectedTheme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (prefersDark) {
+                    document.body.style.backgroundColor = 'black';
+                    document.body.style.color = 'white';
+                } else {
+                    document.body.style.backgroundColor = 'white';
+                    document.body.style.color = 'black';
+                }
+            }
+        }
+        // Initialize theme based on system preference
+        switchTheme();
+    </script>
+</body>
+</html>
