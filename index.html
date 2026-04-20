@@ -3,164 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mob Maze</title>
+    <title>Mobmaze</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body.white {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        
-        body.black {
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-        
-        body.system {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            body.system {
-                background-color: #1a1a1a;
-                color: #ffffff;
-            }
-        }
-        
-        header {
-            padding: 20px;
-            border-bottom: 2px solid #ccc;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        header select {
-            padding: 8px 12px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        section {
-            margin-bottom: 40px;
-        }
-        
-        h1, h2 {
-            margin-bottom: 15px;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border-radius: 8px;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 2px solid #ccc;
-            margin-top: 40px;
-        }
+        body { font-family: Arial, sans-serif; }
+        header { display: flex; justify-content: space-between; padding: 10px; background-color: #f0f0f0; }
+        .settings { margin-right: 10px; }
+        .theme-switcher { display: none; }
     </style>
 </head>
-<body class="white">
-    <header>
-        <h1>🎮 Mob Maze</h1>
-        <select onchange="switchTheme(this.value)">
-            <option value="white">White</option>
-            <option value="system">System</option>
-            <option value="black">Black</option>
-        </select>
-    </header>
-    
-    <main>
-        <section>
-            <img src="https://github.com/user-attachments/assets/aabf1263-3a53-401a-b4f0-7ff548e10431" alt="Mob Maze Game">
-        </section>
-        
-        <section>
-            <h2>Game Overview</h2>
-            <p>Mob Maze is an exciting adventure game where players navigate through a labyrinth filled with various challenges and obstacles. The ultimate goal is to reach the end of the maze while overcoming enemies and solving puzzles.</p>
-        </section>
-        
-        <section>
-            <h2>Features</h2>
-            <ul>
-                <li><strong>Challenging Mazes:</strong> Each maze is uniquely designed with increasing difficulty levels.</li>
-                <li><strong>Dynamic Enemies:</strong> Players encounter different types of mobs with unique behaviors and attack patterns.</li>
-                <li><strong>Power-ups:</strong> Collect power-ups that offer temporary boosts to speed, strength, or defense.</li>
-                <li><strong>Leaderboards:</strong> Compete with friends and other players to achieve the best time in completing levels.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Gameplay Mechanics</h2>
-            <ul>
-                <li><strong>Movement:</strong> Players can move up, down, left, or right to navigate the maze.</li>
-                <li><strong>Combat:</strong> Engage in combat with mobs using various weapons and tools found throughout the maze.</li>
-                <li><strong>Puzzles:</strong> Some areas of the maze will require players to solve puzzles to unlock new paths.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Guides</h2>
-            <ul>
-                <li>Getting Started: Learn the basics of movement, combat, and item collection.</li>
-                <li>Tips for Navigating Mazes: Strategies for finding the quickest routes.</li>
-                <li>Combat Strategies: Best practices for fighting each type of enemy.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Strategies</h2>
-            <ul>
-                <li><strong>Map Awareness:</strong> Always be aware of your surroundings; use the maze layout to your advantage.</li>
-                <li><strong>Resource Management:</strong> Keep track of health and power-ups to ensure survival during difficult encounters.</li>
-                <li><strong>Practice:</strong> Regular practice will help you master maze navigation and enemy combat.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <p>Feel free to explore and enjoy your adventure in Mob Maze!</p>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2026 Mob Maze. All rights reserved.</p>
-    </footer>
-    
-    <script>
-        function switchTheme(theme) {
-            document.body.className = theme;
-            localStorage.setItem('mobmaze-theme', theme);
-        }
-        
-        // Load saved theme preference
-        const savedTheme = localStorage.getItem('mobmaze-theme') || 'white';
-        document.body.className = savedTheme;
-        document.querySelector('select').value = savedTheme;
-    </script>
+<body>
+<header>
+    <div class="settings">
+        <button id="settingsButton">Settings</button>
+    </div>
+</header>
+
+<main>
+    <h1>Welcome to Mobmaze</h1>
+    <!-- Main game content goes here -->
+</main>
+
+<div id="themeSwitcher" class="theme-switcher">
+    <h2>Choose Theme:</h2>
+    <button onclick="setTheme('white')">White</button>
+    <button onclick="setTheme('system')">System</button>
+    <button onclick="setTheme('black')">Black</button>
+    <button onclick="goHome()">Home</button>
+</div>
+
+<script>
+    document.getElementById('settingsButton').onclick = function() {
+        var themeSwitcher = document.getElementById('themeSwitcher');
+        themeSwitcher.style.display = themeSwitcher.style.display === 'none' ? 'block' : 'none';
+    };
+
+    function setTheme(theme) {
+        document.body.className = theme;
+        console.log('Theme set to:', theme);
+    }
+
+    function goHome() {
+        window.location.href = '/'; // Redirects to the main game page
+    }
+</script>
 </body>
 </html>
