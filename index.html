@@ -3,57 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mob Maze Game</title>
+    <title>Mob Maze</title>
     <style>
-        body {
-            background-color: white;
-            color: black;
-            transition: background-color 0.3s, color 0.3s;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .theme-switcher {
-            margin: 20px;
+        
+        body.white {
+            background-color: #ffffff;
+            color: #000000;
         }
-        .game-artwork {
-            width: 100%;
-            max-width: 600px;
+        
+        body.black {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        body.system {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            body.system {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+        }
+        
+        header {
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header select {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h1, h2 {
+            margin-bottom: 15px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 2px solid #ccc;
+            margin-top: 40px;
         }
     </style>
 </head>
-<body>
-    <div class="theme-switcher">
-        <label for="theme">Choose Theme:</label>
-        <select id="theme" onchange="switchTheme()">
+<body class="white">
+    <header>
+        <h1>🎮 Mob Maze</h1>
+        <select onchange="switchTheme(this.value)">
             <option value="white">White</option>
-            <option value="system">System (Auto)</option>
+            <option value="system">System</option>
             <option value="black">Black</option>
         </select>
-    </div>
-    <h1>Mob Maze Game</h1>
-    <p>Welcome to Mob Maze, a thrilling maze adventure game where you navigate through complex mazes, avoiding obstacles and solving puzzles!</p>
-    <img src="mob-maze-artwork.jpg" alt="Mob Maze Artwork" class="game-artwork">
-
+    </header>
+    
+    <main>
+        <section>
+            <img src="https://github.com/user-attachments/assets/aabf1263-3a53-401a-b4f0-7ff548e10431" alt="Mob Maze Game">
+        </section>
+        
+        <section>
+            <h2>Game Overview</h2>
+            <p>Mob Maze is an exciting adventure game where players navigate through a labyrinth filled with various challenges and obstacles. The ultimate goal is to reach the end of the maze while overcoming enemies and solving puzzles.</p>
+        </section>
+        
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li><strong>Challenging Mazes:</strong> Each maze is uniquely designed with increasing difficulty levels.</li>
+                <li><strong>Dynamic Enemies:</strong> Players encounter different types of mobs with unique behaviors and attack patterns.</li>
+                <li><strong>Power-ups:</strong> Collect power-ups that offer temporary boosts to speed, strength, or defense.</li>
+                <li><strong>Leaderboards:</strong> Compete with friends and other players to achieve the best time in completing levels.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Gameplay Mechanics</h2>
+            <ul>
+                <li><strong>Movement:</strong> Players can move up, down, left, or right to navigate the maze.</li>
+                <li><strong>Combat:</strong> Engage in combat with mobs using various weapons and tools found throughout the maze.</li>
+                <li><strong>Puzzles:</strong> Some areas of the maze will require players to solve puzzles to unlock new paths.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Guides</h2>
+            <ul>
+                <li>Getting Started: Learn the basics of movement, combat, and item collection.</li>
+                <li>Tips for Navigating Mazes: Strategies for finding the quickest routes.</li>
+                <li>Combat Strategies: Best practices for fighting each type of enemy.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Strategies</h2>
+            <ul>
+                <li><strong>Map Awareness:</strong> Always be aware of your surroundings; use the maze layout to your advantage.</li>
+                <li><strong>Resource Management:</strong> Keep track of health and power-ups to ensure survival during difficult encounters.</li>
+                <li><strong>Practice:</strong> Regular practice will help you master maze navigation and enemy combat.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <p>Feel free to explore and enjoy your adventure in Mob Maze!</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2026 Mob Maze. All rights reserved.</p>
+    </footer>
+    
     <script>
-        function switchTheme() {
-            const selectedTheme = document.getElementById('theme').value;
-            if (selectedTheme === 'black') {
-                document.body.style.backgroundColor = 'black';
-                document.body.style.color = 'white';
-            } else if (selectedTheme === 'white') {
-                document.body.style.backgroundColor = 'white';
-                document.body.style.color = 'black';
-            } else if (selectedTheme === 'system') {
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                if (prefersDark) {
-                    document.body.style.backgroundColor = 'black';
-                    document.body.style.color = 'white';
-                } else {
-                    document.body.style.backgroundColor = 'white';
-                    document.body.style.color = 'black';
-                }
-            }
+        function switchTheme(theme) {
+            document.body.className = theme;
+            localStorage.setItem('mobmaze-theme', theme);
         }
-        // Initialize theme based on system preference
-        switchTheme();
+        
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('mobmaze-theme') || 'white';
+        document.body.className = savedTheme;
+        document.querySelector('select').value = savedTheme;
     </script>
 </body>
 </html>
